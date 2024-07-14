@@ -1,5 +1,33 @@
 [
   {
+    "bindings": {
+      "shift-tab": "menu::SelectPrev",
+      "home": "menu::SelectFirst",
+      "pageup": "menu::SelectFirst",
+      "shift-pageup": "menu::SelectFirst",
+      "ctrl-p": "menu::SelectPrev",
+      "tab": "menu::SelectNext",
+      "end": "menu::SelectLast",
+      "pagedown": "menu::SelectLast",
+      "shift-pagedown": "menu::SelectFirst",
+      "ctrl-n": "menu::SelectNext",
+      "enter": "menu::Confirm",
+      "ctrl-enter": "menu::SecondaryConfirm",
+      "escape": "menu::Cancel",
+      "shift-enter": "picker::UseSelectedQuery",
+      "alt-enter": ["picker::ConfirmInput", { "secondary": false }],
+      "ctrl-shift-w": "workspace::CloseWindow",
+      "shift-escape": "workspace::ToggleZoom",
+      "f11": "zed::ToggleFullScreen",
+      "ctrl-:": "editor::ToggleInlayHints",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-t": "workspace::ToggleBottomDock"
+    }
+  },
+  {
     "context": "Editor",
     "bindings": {
       "alt-up": "editor::MoveLineUp",
@@ -13,81 +41,13 @@
       "ctrl-c": "editor::Copy",
       "ctrl-v": "editor::Paste",
       "ctrl-y": "editor::Redo",
-      "ctrl-z": "editor::Undo",
-      "up": "editor::MoveUp",
-      "down": "editor::MoveDown",
-      "left": "editor::MoveLeft",
-      "right": "editor::MoveRight"
+      "ctrl-z": "editor::Undo"
     }
   },
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "ctrl-f": "buffer_search::Deploy",
-      "ctrl-h": ["buffer_search::Deploy", { "replace_enabled": true }]
-    }
-  },
-  {
-    "context": "AssistantPanel",
-    "bindings": {}
-  },
-  {
-    "context": "PromptLibrary",
-    "bindings": {}
-  },
-  {
-    "context": "ProjectSearchBar",
-    "bindings": {}
-  },
-  {
-    "context": "ProjectSearchBar > Editor",
-    "bindings": {}
-  },
-  {
-    "context": "ProjectSearchBar && in_replace",
-    "bindings": {}
-  },
-  {
-    "context": "ProjectSearchView",
-    "bindings": {}
-  },
-  {
-    "context": "Pane",
-    "bindings": {
-      "ctrl-w": "pane::CloseActiveItem",
-      "alt-c": "search::ToggleCaseSensitive",
-      "alt-w": "search::ToggleWholeWord",
-      "alt-r": "search::ToggleRegex",
-      "alt-1": ["pane::ActivateItem", 0],
-      "alt-2": ["pane::ActivateItem", 1],
-      "alt-3": ["pane::ActivateItem", 2],
-      "alt-4": ["pane::ActivateItem", 3],
-      "alt-5": ["pane::ActivateItem", 4],
-      "alt-6": ["pane::ActivateItem", 5],
-      "alt-7": ["pane::ActivateItem", 6],
-      "alt-8": ["pane::ActivateItem", 7],
-      "alt-9": ["pane::ActivateItem", 8],
-      "alt-0": "pane::ActivateLastItem",
-      "f3": "search::SelectNextMatch",
-      "shift-f3": "search::SelectPrevMatch"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-s": "workspace::Save",
-      "ctrl-k s": "workspace::SaveWithoutFormat",
-      "ctrl-n": "workspace::NewFile",
-      "alt-1": ["workspace::ActivatePane", 0],
-      "alt-2": ["workspace::ActivatePane", 1],
-      "alt-3": ["workspace::ActivatePane", 2],
-      "alt-4": ["workspace::ActivatePane", 3],
-      "alt-5": ["workspace::ActivatePane", 4],
-      "alt-6": ["workspace::ActivatePane", 5],
-      "alt-7": ["workspace::ActivatePane", 6],
-      "alt-8": ["workspace::ActivatePane", 7],
-      "alt-9": ["workspace::ActivatePane", 8],
-      "escape": "workspace::Unfollow"
+      "ctrl-f": "buffer_search::Deploy"
     }
   },
   {
@@ -117,24 +77,14 @@
   {
     "context": "Editor && (showing_code_actions || showing_completions)",
     "bindings": {
-      "up": "editor::ContextMenuPrev",
       "ctrl-p": "editor::ContextMenuPrev",
-      "down": "editor::ContextMenuNext",
-      "ctrl-n": "editor::ContextMenuNext",
-      "pageup": "editor::ContextMenuFirst",
-      "pagedown": "editor::ContextMenuLast"
+      "ctrl-n": "editor::ContextMenuNext"
     }
   },
   {
     "context": "ContextEditor > Editor",
     "bindings": {
       "ctrl-s": "workspace::Save"
-    }
-  },
-  {
-    "context": "ProjectSearchBar && !in_replace",
-    "bindings": {
-      "ctrl-enter": "project_search::SearchInNew"
     }
   },
   {
@@ -166,6 +116,7 @@
       "k": "vim::Up",
       "l": "vim::Right",
       "space": "vim::Space",
+      "g g": "vim::StartOfDocument",
       "shift-g": "vim::EndOfDocument",
       "/": "vim::Search",
       "n": "vim::MoveToNextMatch",
@@ -278,7 +229,6 @@
           "before": true
         }
       ],
-      "u": "vim::Undo",
       "ctrl-r": "vim::Redo",
       "r": ["vim::PushOperator", "Replace"],
       "s": "vim::Substitute",
@@ -417,7 +367,13 @@
       "<": "vim::CurrentLine"
     }
   },
-  //Sorted:
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore",
+      "escape": "vim::NormalBefore"
+    }
+  },
   {
     "context": "BufferSearchBar",
     "bindings": {
@@ -426,9 +382,7 @@
       "enter": "search::SelectNextMatch",
       "shift-enter": "search::SelectPrevMatch",
       "alt-enter": "search::SelectAllMatches",
-      "ctrl-f": "search::FocusSearch",
-      "ctrl-h": "search::ToggleReplace",
-      "ctrl-l": "search::ToggleSelection"
+      "ctrl-f": "search::FocusSearch"
     }
   },
   {
@@ -436,13 +390,6 @@
     "bindings": {
       "enter": "search::ReplaceNext",
       "ctrl-enter": "search::ReplaceAll"
-    }
-  },
-  {
-    "context": "BufferSearchBar && !in_replace > Editor",
-    "bindings": {
-      "up": "search::PreviousHistoryQuery",
-      "down": "search::NextHistoryQuery"
     }
   },
   {
@@ -463,10 +410,6 @@
       "shift-ctrl-v": "terminal::Paste",
       "shift-insert": "terminal::Paste",
       "ctrl-enter": "assistant::InlineAssist",
-      "up": ["terminal::SendKeystroke", "up"],
-      "pageup": ["terminal::SendKeystroke", "pageup"],
-      "down": ["terminal::SendKeystroke", "down"],
-      "pagedown": ["terminal::SendKeystroke", "pagedown"],
       "escape": ["terminal::SendKeystroke", "escape"],
       "enter": ["terminal::SendKeystroke", "enter"],
       "ctrl-c": ["terminal::SendKeystroke", "ctrl-c"],
@@ -483,61 +426,19 @@
     "bindings": {
       "j": "menu::SelectNext",
       "k": "menu::SelectPrev",
-      "shift-g": "menu::SelectLast",
-      "g g": "menu::SelectFirst"
+      "shift-g": "menu::SelectLast"
     }
   },
   {
     "context": "OutlinePanel",
     "bindings": {
       "escape": "menu::Cancel",
-      "left": "outline_panel::CollapseSelectedEntry",
-      "right": "outline_panel::ExpandSelectedEntry",
       "ctrl-alt-c": "outline_panel::CopyPath",
       "alt-ctrl-shift-c": "outline_panel::CopyRelativePath",
       "alt-ctrl-r": "outline_panel::RevealInFileManager",
       "space": "outline_panel::Open",
       "shift-down": "menu::SelectNext",
       "shift-up": "menu::SelectPrev"
-    }
-  },
-  {
-    "bindings": {
-      "up": "menu::SelectPrev",
-      "shift-tab": "menu::SelectPrev",
-      "home": "menu::SelectFirst",
-      "pageup": "menu::SelectFirst",
-      "shift-pageup": "menu::SelectFirst",
-      "ctrl-p": "menu::SelectPrev",
-      "down": "menu::SelectNext",
-      "tab": "menu::SelectNext",
-      "end": "menu::SelectLast",
-      "pagedown": "menu::SelectLast",
-      "shift-pagedown": "menu::SelectFirst",
-      "ctrl-n": "menu::SelectNext",
-      "enter": "menu::Confirm",
-      "ctrl-enter": "menu::SecondaryConfirm",
-      "escape": "menu::Cancel",
-      "ctrl-escape": "menu::Cancel",
-      "ctrl-c": "menu::Cancel",
-      "shift-enter": "picker::UseSelectedQuery",
-      "alt-enter": ["picker::ConfirmInput", { "secondary": false }],
-      "ctrl-shift-w": "workspace::CloseWindow",
-      "shift-escape": "workspace::ToggleZoom",
-      "f11": "zed::ToggleFullScreen",
-      "ctrl-:": "editor::ToggleInlayHints",
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-t": "workspace::ToggleBottomDock"
-    }
-  },
-  {
-    "context": "vim_mode == insert",
-    "bindings": {
-      "j j": "vim::NormalBefore",
-      "escape": "vim::NormalBefore"
     }
   },
   {
@@ -577,6 +478,44 @@
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
       "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-w": "pane::CloseActiveItem",
+      "alt-c": "search::ToggleCaseSensitive",
+      "alt-w": "search::ToggleWholeWord",
+      "alt-r": "search::ToggleRegex",
+      "alt-1": ["pane::ActivateItem", 0],
+      "alt-2": ["pane::ActivateItem", 1],
+      "alt-3": ["pane::ActivateItem", 2],
+      "alt-4": ["pane::ActivateItem", 3],
+      "alt-5": ["pane::ActivateItem", 4],
+      "alt-6": ["pane::ActivateItem", 5],
+      "alt-7": ["pane::ActivateItem", 6],
+      "alt-8": ["pane::ActivateItem", 7],
+      "alt-9": ["pane::ActivateItem", 8],
+      "alt-0": "pane::ActivateLastItem",
+      "f3": "search::SelectNextMatch",
+      "shift-f3": "search::SelectPrevMatch"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": "workspace::Save",
+      "ctrl-n": "workspace::NewFile",
+      "alt-1": ["workspace::ActivatePane", 0],
+      "alt-2": ["workspace::ActivatePane", 1],
+      "alt-3": ["workspace::ActivatePane", 2],
+      "alt-4": ["workspace::ActivatePane", 3],
+      "alt-5": ["workspace::ActivatePane", 4],
+      "alt-6": ["workspace::ActivatePane", 5],
+      "alt-7": ["workspace::ActivatePane", 6],
+      "alt-8": ["workspace::ActivatePane", 7],
+      "alt-9": ["workspace::ActivatePane", 8],
+      "escape": "workspace::Unfollow"
     }
   }
 ]
