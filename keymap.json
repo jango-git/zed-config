@@ -2,194 +2,62 @@
   {
     "context": "Editor",
     "bindings": {
-      "ctrl-[": "editor::Outdent",
-      "ctrl-]": "editor::Indent",
       "alt-up": "editor::MoveLineUp",
       "alt-down": "editor::MoveLineDown",
-      "ctrl-k ctrl-d": ["editor::SelectNext", { "replace_newest": true }],
-      "ctrl-k ctrl-i": "editor::Hover",
-      "ctrl-/": ["editor::ToggleComments", { "advance_downwards": false }],
-      "ctrl-u": "editor::UndoSelection",
-      "ctrl-shift-u": "editor::RedoSelection",
-      "f8": "editor::GoToDiagnostic",
-      "shift-f8": "editor::GoToPrevDiagnostic",
-      "f2": "editor::Rename",
-      "f12": "editor::GoToDefinition",
-      "alt-f12": "editor::GoToDefinitionSplit",
-      "ctrl-f12": "editor::GoToTypeDefinition",
-      "shift-f12": "editor::GoToImplementation",
-      "ctrl-m": "editor::MoveToEnclosingBracket",
-      "ctrl-space": "editor::ShowCompletions",
-      "ctrl-.": "editor::ToggleCodeActions",
-      "alt-ctrl-r": "editor::RevealInFileManager",
-      "ctrl-k r": "editor::RevealInFileManager",
-      "ctrl-k p": "editor::CopyPath",
-      "ctrl-\\": "pane::SplitRight",
-      "ctrl-k v": "markdown::OpenPreviewToTheSide",
       "escape": "editor::Cancel",
       "backspace": "editor::Backspace",
-      "shift-backspace": "editor::Backspace",
       "delete": "editor::Delete",
-      "ctrl-d": "editor::Delete",
       "tab": "editor::Tab",
       "shift-tab": "editor::TabPrev",
-      "ctrl-k": "editor::CutToEndOfLine",
-      "ctrl-backspace": "editor::DeleteToPreviousWordStart",
-      "ctrl-delete": "editor::DeleteToNextWordEnd",
-      "shift-delete": "editor::Cut",
       "ctrl-x": "editor::Cut",
-      "ctrl-insert": "editor::Copy",
       "ctrl-c": "editor::Copy",
-      "shift-insert": "editor::Paste",
       "ctrl-v": "editor::Paste",
       "ctrl-y": "editor::Redo",
       "ctrl-z": "editor::Undo",
       "up": "editor::MoveUp",
-      "ctrl-up": "editor::LineUp",
-      "ctrl-down": "editor::LineDown",
-      "pageup": "editor::MovePageUp",
-      "alt-pageup": "editor::PageUp",
-      "shift-pageup": "editor::SelectPageUp",
-      "home": "editor::MoveToBeginningOfLine",
       "down": "editor::MoveDown",
-      "pagedown": "editor::MovePageDown",
-      "alt-pagedown": "editor::PageDown",
-      "shift-pagedown": "editor::SelectPageDown",
-      "end": "editor::MoveToEndOfLine",
       "left": "editor::MoveLeft",
-      "right": "editor::MoveRight",
-      "ctrl-left": "editor::MoveToPreviousWordStart",
-      "ctrl-right": "editor::MoveToNextWordEnd",
-      "ctrl-home": "editor::MoveToBeginning",
-      "ctrl-end": "editor::MoveToEnd",
-      "shift-up": "editor::SelectUp",
-      "shift-down": "editor::SelectDown",
-      "shift-left": "editor::SelectLeft",
-      "shift-right": "editor::SelectRight",
-      "ctrl-a": "editor::SelectAll",
-      "ctrl-l": "editor::SelectLine",
-      "shift-home": [
-        "editor::SelectToBeginningOfLine",
-        { "stop_at_soft_wraps": true }
-      ],
-      "shift-end": [
-        "editor::SelectToEndOfLine",
-        { "stop_at_soft_wraps": true }
-      ],
-      "ctrl-;": "editor::ToggleLineNumbers",
-      "ctrl-k ctrl-r": "editor::RevertSelectedHunks",
-      "ctrl-'": "editor::ToggleHunkDiff",
-      "ctrl-\"": "editor::ExpandAllHunkDiffs",
-      "alt-g b": "editor::ToggleGitBlame"
+      "right": "editor::MoveRight"
     }
   },
   {
     "context": "Editor && mode == full",
     "bindings": {
-      "ctrl-g": "go_to_line::Toggle",
-      "alt-enter": "editor::OpenExcerpts",
-      "ctrl-k enter": "editor::OpenExcerptsSplit",
-      "ctrl-f8": "editor::GoToHunk",
-      "enter": "editor::Newline",
-      "shift-enter": "editor::Newline",
-      "alt-z": "editor::ToggleSoftWrap",
       "ctrl-f": "buffer_search::Deploy",
-      "ctrl-h": ["buffer_search::Deploy", { "replace_enabled": true }],
-      "ctrl->": "assistant::QuoteSelection",
-      "ctrl-<": "assistant::InsertIntoEditor",
-      "ctrl-alt-e": "editor::SelectEnclosingSymbol"
-    }
-  },
-  {
-    "context": "Editor && mode == full && inline_completion",
-    "bindings": {
-      "alt-]": "editor::NextInlineCompletion",
-      "alt-[": "editor::PreviousInlineCompletion",
-      "alt-right": "editor::AcceptPartialInlineCompletion"
-    }
-  },
-  {
-    "context": "Editor && !inline_completion",
-    "bindings": {
-      "alt-\\": "editor::ShowInlineCompletion"
-    }
-  },
-  {
-    "context": "Editor && mode == auto_height",
-    "bindings": {
-      "ctrl-enter": "editor::Newline",
-      "shift-enter": "editor::Newline",
-      "ctrl-shift-enter": "editor::NewlineBelow"
-    }
-  },
-  {
-    "context": "Markdown",
-    "bindings": {
-      "ctrl-c": "markdown::Copy"
+      "ctrl-h": ["buffer_search::Deploy", { "replace_enabled": true }]
     }
   },
   {
     "context": "AssistantPanel",
-    "bindings": {
-      "ctrl-g": "search::SelectNextMatch",
-      "alt-m": "assistant::ToggleModelSelector"
-    }
+    "bindings": {}
   },
   {
     "context": "PromptLibrary",
-    "bindings": {
-      "ctrl-n": "prompt_library::NewPrompt"
-    }
+    "bindings": {}
   },
   {
     "context": "ProjectSearchBar",
-    "bindings": {
-      "escape": "project_search::ToggleFocus",
-      "ctrl-shift-f": "search::FocusSearch",
-      "ctrl-shift-h": "search::ToggleReplace",
-      "alt-ctrl-g": "search::ToggleRegex",
-      "alt-ctrl-x": "search::ToggleRegex"
-    }
+    "bindings": {}
   },
   {
     "context": "ProjectSearchBar > Editor",
-    "bindings": {
-      "up": "search::PreviousHistoryQuery",
-      "down": "search::NextHistoryQuery"
-    }
+    "bindings": {}
   },
   {
     "context": "ProjectSearchBar && in_replace",
-    "bindings": {
-      "enter": "search::ReplaceNext"
-    }
+    "bindings": {}
   },
   {
     "context": "ProjectSearchView",
-    "bindings": {
-      "escape": "project_search::ToggleFocus",
-      "alt-ctrl-g": "search::ToggleRegex",
-      "alt-ctrl-x": "search::ToggleRegex"
-    }
+    "bindings": {}
   },
   {
     "context": "Pane",
     "bindings": {
-      "ctrl-pageup": "pane::ActivatePrevItem",
-      "ctrl-pagedown": "pane::ActivateNextItem",
       "ctrl-w": "pane::CloseActiveItem",
-      "ctrl-f4": "pane::CloseActiveItem",
-      "ctrl-k u": "pane::CloseCleanItems",
-      "ctrl-k w": "pane::CloseAllItems",
-      "alt-enter": "search::SelectAllMatches",
       "alt-c": "search::ToggleCaseSensitive",
       "alt-w": "search::ToggleWholeWord",
-      "alt-r": "search::ToggleRegex"
-    }
-  },
-  {
-    "context": "Pane",
-    "bindings": {
+      "alt-r": "search::ToggleRegex",
       "alt-1": ["pane::ActivateItem", 0],
       "alt-2": ["pane::ActivateItem", 1],
       "alt-3": ["pane::ActivateItem", 2],
@@ -207,11 +75,9 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-~": "workspace::NewTerminal",
       "ctrl-s": "workspace::Save",
       "ctrl-k s": "workspace::SaveWithoutFormat",
       "ctrl-n": "workspace::NewFile",
-      "ctrl-`": "terminal_panel::ToggleFocus",
       "alt-1": ["workspace::ActivatePane", 0],
       "alt-2": ["workspace::ActivatePane", 1],
       "alt-3": ["workspace::ActivatePane", 2],
@@ -221,27 +87,7 @@
       "alt-7": ["workspace::ActivatePane", 6],
       "alt-8": ["workspace::ActivatePane", 7],
       "alt-9": ["workspace::ActivatePane", 8],
-      "ctrl-b": "workspace::ToggleLeftDock",
-      "ctrl-j": "workspace::ToggleBottomDock",
-      "ctrl-k ctrl-s": "zed::OpenKeymap",
-      "ctrl-k ctrl-t": "theme_selector::Toggle",
-      "ctrl-t": "project_symbols::Toggle",
-      "ctrl-p": "file_finder::Toggle",
-      "ctrl-tab": "tab_switcher::Toggle",
-      "ctrl-e": "file_finder::Toggle",
-      "f1": "command_palette::Toggle",
-      "ctrl-?": "assistant::ToggleFocus",
-      "ctrl-k m": "language_selector::Toggle",
-      "escape": "workspace::Unfollow",
-      "ctrl-k ctrl-left": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-k ctrl-right": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k ctrl-up": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-k ctrl-down": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k shift-left": ["workspace::SwapPaneInDirection", "Left"],
-      "ctrl-k shift-right": ["workspace::SwapPaneInDirection", "Right"],
-      "ctrl-k shift-up": ["workspace::SwapPaneInDirection", "Up"],
-      "ctrl-k shift-down": ["workspace::SwapPaneInDirection", "Down"],
-      "alt-t": "task::Rerun"
+      "escape": "workspace::Unfollow"
     }
   },
   {
@@ -253,8 +99,7 @@
   {
     "context": "Editor && showing_completions",
     "bindings": {
-      "enter": "editor::ConfirmCompletion",
-      "tab": "editor::ConfirmCompletion"
+      "enter": "editor::ConfirmCompletion"
     }
   },
   {
@@ -281,52 +126,15 @@
     }
   },
   {
-    "bindings": {
-      "ctrl-:": "editor::ToggleInlayHints"
-    }
-  },
-  {
     "context": "ContextEditor > Editor",
     "bindings": {
-      "ctrl-enter": "assistant::Assist",
-      "ctrl-s": "workspace::Save",
-      "ctrl->": "assistant::QuoteSelection",
-      "ctrl-<": "assistant::InsertIntoEditor",
-      "shift-enter": "assistant::Split",
-      "ctrl-r": "assistant::CycleMessageRole",
-      "enter": "assistant::ConfirmCommand",
-      "alt-enter": "editor::Newline"
+      "ctrl-s": "workspace::Save"
     }
   },
   {
     "context": "ProjectSearchBar && !in_replace",
     "bindings": {
       "ctrl-enter": "project_search::SearchInNew"
-    }
-  },
-  {
-    "context": "CollabPanel && not_editing",
-    "bindings": {
-      "ctrl-backspace": "collab_panel::Remove",
-      "space": "menu::Confirm"
-    }
-  },
-  {
-    "context": "(CollabPanel && editing) > Editor",
-    "bindings": {
-      "space": "collab_panel::InsertSpace"
-    }
-  },
-  {
-    "context": "ChannelModal",
-    "bindings": {
-      "tab": "channel_modal::ToggleMode"
-    }
-  },
-  {
-    "context": "ChannelModal > Picker > Editor",
-    "bindings": {
-      "tab": "channel_modal::ToggleMode"
     }
   },
   {
@@ -351,122 +159,28 @@
           }
         }
       ],
-      ":": "command_palette::Toggle",
       "h": "vim::Left",
-      "left": "vim::Left",
       "backspace": "vim::Backspace",
       "j": "vim::Down",
-      "down": "vim::Down",
-      "enter": "vim::NextLineStart",
-      "ctrl-m": "vim::NextLineStart",
-      "+": "vim::NextLineStart",
       "tab": "vim::Tab",
-      "shift-tab": "vim::Tab",
       "k": "vim::Up",
-      "up": "vim::Up",
       "l": "vim::Right",
-      "right": "vim::Right",
       "space": "vim::Space",
-      "$": "vim::EndOfLine",
-      "end": "vim::EndOfLine",
-      "^": "vim::FirstNonWhitespace",
-      "_": "vim::StartOfLineDownward",
-      "g _": "vim::EndOfLineDownward",
       "shift-g": "vim::EndOfDocument",
-      "{": "vim::StartOfParagraph",
-      "}": "vim::EndOfParagraph",
-      "|": "vim::GoToColumn",
-
       "/": "vim::Search",
-      "g /": "pane::DeploySearch",
-      "?": [
-        "vim::Search",
-        {
-          "backwards": true
-        }
-      ],
-      "*": "vim::MoveToNext",
-      "#": "vim::MoveToPrev",
       "n": "vim::MoveToNextMatch",
       "shift-n": "vim::MoveToPrevMatch",
-      "%": "vim::Matching",
-      "f": [
-        "vim::PushOperator",
-        {
-          "FindForward": {
-            "before": false
-          }
-        }
-      ],
-      "t": [
-        "vim::PushOperator",
-        {
-          "FindForward": {
-            "before": true
-          }
-        }
-      ],
-      "shift-f": [
-        "vim::PushOperator",
-        {
-          "FindBackward": {
-            "after": false
-          }
-        }
-      ],
-      "shift-t": [
-        "vim::PushOperator",
-        {
-          "FindBackward": {
-            "after": true
-          }
-        }
-      ],
       "m": ["vim::PushOperator", "Mark"],
-      "'": [
-        "vim::PushOperator",
-        {
-          "Jump": {
-            "line": true
-          }
-        }
-      ],
-      "`": [
-        "vim::PushOperator",
-        {
-          "Jump": {
-            "line": false
-          }
-        }
-      ],
-      ";": "vim::RepeatFind",
-      ",": "vim::RepeatFindReversed",
       "ctrl-o": "pane::GoBack",
       "ctrl-i": "pane::GoForward",
       "ctrl-]": "editor::GoToDefinition",
       "escape": ["vim::SwitchMode", "Normal"],
-      "ctrl-[": ["vim::SwitchMode", "Normal"],
       "v": "vim::ToggleVisual",
       "shift-v": "vim::ToggleVisualLine",
       "ctrl-v": "vim::ToggleVisualBlock",
       "ctrl-q": "vim::ToggleVisualBlock",
-      "shift-k": "editor::Hover",
-      "shift-r": "vim::ToggleReplace",
       "0": "vim::StartOfLine",
-      "home": "vim::StartOfLine",
-      "ctrl-f": "vim::PageDown",
-      "pagedown": "vim::PageDown",
-      "ctrl-b": "vim::PageUp",
-      "pageup": "vim::PageUp",
-      "ctrl-d": "vim::ScrollDown",
-      "ctrl-u": "vim::ScrollUp",
-      "ctrl-e": "vim::LineDown",
-      "ctrl-y": "vim::LineUp",
       // "g" commands
-      "g g": "vim::StartOfDocument",
-      "g h": "editor::Hover",
-      "g t": "pane::ActivateNextItem",
-      "g shift-t": "pane::ActivatePrevItem",
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToTypeDefinition",
       "g cmd-d": "editor::GoToImplementation",
@@ -493,61 +207,13 @@
       "g .": "editor::ToggleCodeActions", // zed specific
       "g shift-a": "editor::FindAllReferences", // zed specific
       "g space": "editor::OpenExcerpts", // zed specific
-      "g *": [
-        "vim::MoveToNext",
-        {
-          "partialWord": true
-        }
-      ],
-      "g #": [
-        "vim::MoveToPrev",
-        {
-          "partialWord": true
-        }
-      ],
-      "g j": [
-        "vim::Down",
-        {
-          "displayLines": true
-        }
-      ],
-      "g down": [
-        "vim::Down",
-        {
-          "displayLines": true
-        }
-      ],
-      "g k": [
-        "vim::Up",
-        {
-          "displayLines": true
-        }
-      ],
-      "g up": [
-        "vim::Up",
-        {
-          "displayLines": true
-        }
-      ],
       "g $": [
         "vim::EndOfLine",
         {
           "displayLines": true
         }
       ],
-      "g end": [
-        "vim::EndOfLine",
-        {
-          "displayLines": true
-        }
-      ],
       "g 0": [
-        "vim::StartOfLine",
-        {
-          "displayLines": true
-        }
-      ],
-      "g home": [
         "vim::StartOfLine",
         {
           "displayLines": true
@@ -566,25 +232,9 @@
       "g ,": "vim::ChangeListNewer",
       "g ;": "vim::ChangeListOlder",
       // z commands
-      "z t": "editor::ScrollCursorTop",
-      "z z": "editor::ScrollCursorCenter",
-      "z .": ["workspace::SendKeystrokes", "z z ^"],
-      "z b": "editor::ScrollCursorBottom",
       "z c": "editor::Fold",
       "z o": "editor::UnfoldLines",
       "z f": "editor::FoldSelectedRanges",
-      "shift-z shift-q": [
-        "pane::CloseActiveItem",
-        {
-          "saveIntent": "skip"
-        }
-      ],
-      "shift-z shift-z": [
-        "pane::CloseActiveItem",
-        {
-          "saveIntent": "saveAll"
-        }
-      ],
       // Count support
       "1": ["vim::Number", 1],
       "2": ["vim::Number", 2],
@@ -610,10 +260,7 @@
       "escape": "editor::Cancel",
       ".": "vim::Repeat",
       "c": ["vim::PushOperator", "Change"],
-      "shift-c": "vim::ChangeToEndOfLine",
       "d": ["vim::PushOperator", "Delete"],
-      "shift-d": "vim::DeleteToEndOfLine",
-      "shift-j": "vim::JoinLines",
       "y": ["vim::PushOperator", "Yank"],
       "shift-y": "vim::YankLine",
       "i": "vim::InsertBefore",
@@ -624,9 +271,6 @@
       "shift-x": "vim::DeleteLeft",
       "o": "vim::InsertLineBelow",
       "shift-o": "vim::InsertLineAbove",
-      "~": "vim::ChangeCase",
-      "ctrl-a": "vim::Increment",
-      "ctrl-x": "vim::Decrement",
       "p": "vim::Paste",
       "shift-p": [
         "vim::Paste",
@@ -638,13 +282,8 @@
       "ctrl-r": "vim::Redo",
       "r": ["vim::PushOperator", "Replace"],
       "s": "vim::Substitute",
-      "shift-s": "vim::SubstituteLine",
       ">": ["vim::PushOperator", "Indent"],
       "<": ["vim::PushOperator", "Outdent"],
-      "g u": ["vim::PushOperator", "Lowercase"],
-      "g shift-u": ["vim::PushOperator", "Uppercase"],
-      "g ~": ["vim::PushOperator", "OppositeCase"],
-      "\"": ["vim::PushOperator", "Register"],
       "g c c": "vim::ToggleComments"
     }
   },
@@ -696,9 +335,6 @@
     "context": "vim_mode == replace",
     "bindings": {
       "escape": "vim::NormalBefore",
-      "ctrl-c": "vim::NormalBefore",
-      "ctrl-[": "vim::NormalBefore",
-      "backspace": "vim::UndoReplace",
       "tab": "vim::Tab",
       "enter": "vim::Enter"
     }
