@@ -12,6 +12,7 @@
   "tab_size": 2,
   "vim_mode": true,
   "vertical_scroll_margin": 8,
+  "cursor_blink": false,
 
   "tab_bar": {
     "show": true
