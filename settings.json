@@ -11,9 +11,14 @@
   "relative_line_numbers": true,
   "tab_size": 2,
   "vim_mode": true,
+  "vim": {
+    "use_smartcase_find": true,
+    "use_system_clipboard": "always"
+  },
   "vertical_scroll_margin": 8,
   "cursor_blink": false,
-
+  "ui_font_size": 15,
+  "buffer_font_size": 15,
   "tab_bar": {
     "show": true
   },
@@ -25,15 +30,35 @@
   "scrollbar": {
     "show": "never"
   },
+  "terminal": {
+    "button": false
+  },
+  // "notification_panel": {
+  //   "button": false
+  // },
+
+  // "assistant": {
+  //   "button": false
+  // },
+  // "chat_panel": {
+  //   "button": false
+  // },
+
   "project_panel": {
-    "default_width": 300,
+    "default_width": 350,
     "scrollbar": {
       "show": "never"
     }
   },
   "outline_panel": {
-    "default_width": 300
+    "default_width": 350,
+    "button": false
   },
+  "collaboration_panel": {
+    "default_width": 350,
+    "button": false
+  },
+  "soft_wrap": "editor_width",
   "languages": {
     "JSON": {
       "format_on_save": "off"
