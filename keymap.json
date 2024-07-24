@@ -329,8 +329,8 @@
 
       //Other
       // "space": "vim::PushOperator",
-      "space f": "editor::Fold",
-      "space u": "editor::UnfoldLines",
+      "space h": "editor::Fold",
+      "space l": "editor::UnfoldLines",
       "space o": "outline::Toggle",
 
       //G actions
@@ -438,8 +438,8 @@
       "escape": ["vim::SwitchMode", "Normal"],
       // "j j": ["vim::SwitchMode", "Normal"],
       // "k k": ["vim::SwitchMode", "Normal"],
-      "j k": ["vim::SwitchMode", "Normal"],
-      "k j": ["vim::SwitchMode", "Normal"]
+      "j k": ["vim::SwitchMode", "Normal"]
+      // "k j": ["vim::SwitchMode", "Normal"]
     }
   },
   {
@@ -641,7 +641,11 @@
       "h": "project_panel::CollapseSelectedEntry",
       "j": "menu::SelectNext",
       "k": "menu::SelectPrev",
-      "l": "project_panel::OpenPermanent"
+      "l": "project_panel::OpenPermanent",
+
+      "a f": "project_panel::NewFile",
+      "a d": "project_panel::NewDirectory",
+      "r": "project_panel::Rename"
 
       // "shift-alt-l": "outline_panel::ToggleFocus"
 

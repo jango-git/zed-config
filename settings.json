@@ -17,15 +17,15 @@
   },
   "vertical_scroll_margin": 8,
   "cursor_blink": false,
-  "ui_font_size": 15,
-  "buffer_font_size": 15,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
   "tab_bar": {
     "show": true
   },
   "theme": {
     "mode": "system",
     "dark": "Andromeda",
-    "light": "Gruvbox Light Hard"
+    "light": "One Light"
   },
   "scrollbar": {
     "show": "never"
