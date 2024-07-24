@@ -15,6 +15,7 @@
     "use_smartcase_find": true,
     "use_system_clipboard": "always"
   },
+
   "vertical_scroll_margin": 8,
   "cursor_blink": false,
   "ui_font_size": 16,
@@ -25,8 +26,9 @@
   "theme": {
     "mode": "system",
     "dark": "Andromeda",
-    "light": "One Light"
+    "light": "Atelier Sulphurpool Light"
   },
+  "autosave": "on_window_change",
   "scrollbar": {
     "show": "never"
   },
@@ -36,14 +38,12 @@
   // "notification_panel": {
   //   "button": false
   // },
-
   // "assistant": {
   //   "button": false
   // },
   // "chat_panel": {
   //   "button": false
   // },
-
   "project_panel": {
     "default_width": 350,
     "scrollbar": {
