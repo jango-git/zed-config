@@ -1,22 +1,40 @@
 [
   {
     "bindings": {
-      //Menu
-      // "alt-j": "menu::SelectNext",
-      // "alt-k": "menu::SelectPrev",
-
-      "enter": "menu::Confirm",
-      "escape": "menu::Cancel",
-
-      "ctrl-t": "workspace::ToggleBottomDock",
-
       //Navigation
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
 
+      //Menu
+      "alt-j": "menu::SelectNext",
+      "alt-k": "menu::SelectPrev",
+      "enter": "menu::Confirm",
+      "escape": "menu::Cancel",
+
+      "ctrl-shift-h": "workspace::ToggleLeftDock",
+      "ctrl-shift-j": "workspace::ToggleBottomDock",
+      "ctrl-shift-l": "workspace::ToggleRightDock",
+
       "f11": "zed::ToggleFullScreen"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "escape": "editor::Cancel",
+      "backspace": "editor::Backspace",
+      "delete": "editor::Delete",
+      "tab": "editor::Tab"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      //Navigation
+      "alt-h": "pane::ActivatePrevItem",
+      "alt-l": "pane::ActivateNextItem"
     }
   },
   {
@@ -40,14 +58,15 @@
     "context": "VimControl && !menu",
     "bindings": {
       //Word motion
-      "w": "vim::NextSubwordStart",
-      "b": "vim::PreviousSubwordStart",
-      "e": "vim::NextSubwordEnd",
-
+      "w": "vim::NextWordStart",
+      "b": "vim::PreviousWordStart",
+      "e": "vim::NextWordEnd",
+      "shift-w": "vim::NextSubwordStart",
+      "shift-b": "vim::PreviousSubwordStart",
+      "shift-e": "vim::NextSubwordEnd",
       //Search
       "/": "vim::Search",
       "?": "pane::DeploySearch",
-
       //Numbers
       "0": ["vim::Number", 0],
       "1": ["vim::Number", 1],
@@ -59,22 +78,22 @@
       "7": ["vim::Number", 7],
       "8": ["vim::Number", 8],
       "9": ["vim::Number", 9],
-
       //Search
       "alt-j": "vim::MoveToNextMatch",
       "alt-k": "vim::MoveToPrevMatch",
-
       //Tabs
-      "alt-h": "pane::ActivatePrevItem",
-      "alt-l": "pane::ActivateNextItem",
-
+      // "alt-h": "pane::ActivatePrevItem",
+      // "alt-l": "pane::ActivateNextItem",
       //Other
       ":": "command_palette::Toggle",
       "ctrl-w": "pane::CloseActiveItem",
-
+      "space w": "workspace::Save",
       //G actions
       "g g": "vim::StartOfDocument",
-      "shift-g": "vim::EndOfDocument"
+      "shift-g": "vim::EndOfDocument",
+
+      "shift-j": ["workspace::SendKeystrokes", "1 0 j"],
+      "shift-k": ["workspace::SendKeystrokes", "1 0 k"]
     }
   },
   {
@@ -85,77 +104,110 @@
       "shift-i": "vim::InsertFirstNonWhitespace",
       "a": "vim::InsertAfter",
       "shift-a": "vim::InsertEndOfLine",
-
       //Visual
       "v": "vim::ToggleVisual",
       "shift-v": "vim::ToggleVisualLine",
-
       //Undo Redo
       "u": "vim::Undo",
       "ctrl-r": "vim::Redo",
-
       //Yank
       "y": ["vim::PushOperator", "Yank"],
       "shift-y": "vim::YankLine",
-
       //Paste
       "p": "vim::Paste",
-      "shift-p": ["vim::Paste", { "before": true }],
-
+      "shift-p": [
+        "vim::Paste",
+        {
+          "before": true
+        }
+      ],
       //New line
       "o": "vim::InsertLineBelow",
       "shift-o": "vim::InsertLineAbove",
-
       //Delete
       "d": ["vim::PushOperator", "Delete"],
       "shift-d": "vim::DeleteToEndOfLine",
-
       //Other
       // "space": "vim::PushOperator",
       "space h": "editor::Fold",
       "space l": "editor::UnfoldLines",
       "space o": "outline::Toggle",
-
       //G actions
       "g c": "vim::ToggleComments",
-      "g r": "editor::Rename"
+      "g r": "editor::Rename",
+      "g a": "editor::ToggleCodeActions"
     }
   },
   {
     "context": "vim_mode == visual",
     "bindings": {
       "escape": ["vim::SwitchMode", "Normal"],
-
       //Yank
       "y": "vim::VisualYank",
       "shift-y": "vim::VisualYank",
-
       //Delete
       "d": "vim::VisualDelete",
       "shift-d": "vim::VisualDeleteLine",
-
       //Paste
       "p": "vim::Paste",
-      "shift-p": ["vim::Paste", { "preserveClipboard": true }],
-
+      "shift-p": [
+        "vim::Paste",
+        {
+          "preserveClipboard": true
+        }
+      ],
       //Change
       "c": "vim::Substitute",
       "shift-c": "vim::SubstituteLine",
-
       //Indent outdent
       ">": "vim::Indent",
       "<": "vim::Outdent",
-
       //G actions
-      "g c": "vim::ToggleComments"
+      "g c": "vim::ToggleComments",
+
+      "space i a": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible " }
+      ],
+
+      "space i s": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible Simplify this code" }
+      ],
+
+      "space i f": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible Finish this code" }
+      ]
+
+      // "space i a": [
+      //   "assistant::InlineAssist",
+      //   { "prompt": "Be as brief as possible " }
+      // ]
     }
   },
   {
-    "context": "vim_mode == insert",
+    "context": "Editor && vim_mode == insert",
     "bindings": {
-      "escape": ["vim::SwitchMode", "Normal"]
+      "escape": ["vim::SwitchMode", "Normal"],
+      "j k": ["vim::SwitchMode", "Normal"],
+      "enter": "editor::Newline"
     }
   },
+  {
+    "context": "AssistantPanel && vim_mode == insert",
+    "bindings": {
+      "enter": "assistant::Assist"
+    }
+  },
+  // {
+  //   "context": "Editor && vim_mode == insert",
+  //   "bindings": {
+  //     "escape": ["vim::SwitchMode", "Normal"],
+  //     "j k": ["vim::SwitchMode", "Normal"],
+  //     "enter": "editor::Newline"
+  //   }
+  // },
   {
     "context": "vim_mode == insert && !showing_completions",
     "bindings": {
@@ -194,7 +246,31 @@
   {
     "context": "Editor && renaming",
     "bindings": {
-      "tab": "editor::ConfirmRename"
+      "enter": "editor::ConfirmRename"
+    }
+  },
+  // {
+  //   "context": "inline_completion",
+  //   "bindings": {
+  //     "alt-h": "editor::MoveLeft",
+  //     "alt-j": "editor::MoveDown",
+  //     "alt-k": "editor::MoveUp",
+  //     "alt-l": "editor::MoveRight",
+  //     "enter": "editor::ConfirmCompletion"
+  //   }
+  // },
+  // {
+  //   "context": "ContextEditor > Editor",
+  //   "bindings": {
+  //     "enter": "assistant::Assist"
+  //   }
+  // },
+  {
+    "context": "AssistantPanel",
+    "bindings": {
+      "ctrl-enter": "assistant::Assist",
+      "enter": "assistant::Assist",
+      "alt-;": "assistant::ToggleModelSelector"
     }
   },
   {
@@ -203,8 +279,8 @@
       "h": "project_panel::CollapseSelectedEntry",
       "j": "menu::SelectNext",
       "k": "menu::SelectPrev",
+      "d d": "project_panel::Delete",
       "l": "project_panel::OpenPermanent",
-
       "a f": "project_panel::NewFile",
       "a d": "project_panel::NewDirectory",
       "r": "project_panel::Rename"
@@ -217,15 +293,16 @@
       "escape": "buffer_search::Dismiss"
     }
   },
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "enter": "editor::Newline"
-    }
-  },
+  // {
+  //   "context": "Editor && mode == full && vim_mode === insert",
+  //   "bindings": {
+  //     "enter": "editor::Newline"
+  //   }
+  // },
   {
     "context": "Editor && showing_completions",
     "bindings": {
+      "tab": "editor::ConfirmCompletion",
       "enter": "editor::ConfirmCompletion",
       "escape": "editor::Cancel"
     }
@@ -240,9 +317,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "alt-l": "pane::ActivateNextItem",
-      "alt-h": "pane::ActivatePrevItem",
-      "alt-t": "workspace::NewTerminal",
+      "ctrl-t": "workspace::NewTerminal",
       "ctrl-w": "pane::CloseActiveItem"
     }
   },

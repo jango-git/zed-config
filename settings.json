@@ -7,6 +7,21 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "assistant": {
+    "button": false,
+    "default_width": 600,
+    "version": "2",
+    "default_open_ai_model": null,
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o-mini"
+    }
+  },
+  "language_models": {
+    "ollama": {
+      "low_speed_timeout_in_seconds": 60
+    }
+  },
   "base_keymap": "None",
   "relative_line_numbers": true,
   "tab_size": 2,
@@ -38,24 +53,21 @@
   // "notification_panel": {
   //   "button": false
   // },
-  // "assistant": {
-  //   "button": false
-  // },
   // "chat_panel": {
   //   "button": false
   // },
   "project_panel": {
-    "default_width": 350,
+    "default_width": 300,
     "scrollbar": {
       "show": "never"
     }
   },
   "outline_panel": {
-    "default_width": 350,
+    "default_width": 300,
     "button": false
   },
   "collaboration_panel": {
-    "default_width": 350,
+    "default_width": 300,
     "button": false
   },
   "soft_wrap": "editor_width",
