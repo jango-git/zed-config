@@ -88,6 +88,7 @@
       ":": "command_palette::Toggle",
       "ctrl-w": "pane::CloseActiveItem",
       "space w": "workspace::Save",
+      "space q": "workspace::CloseWindow",
       //G actions
       "g g": "vim::StartOfDocument",
       "shift-g": "vim::EndOfDocument",
@@ -132,10 +133,24 @@
       "space h": "editor::Fold",
       "space l": "editor::UnfoldLines",
       "space o": "outline::Toggle",
+      "space g": "go_to_line::Toggle",
       //G actions
       "g c": "vim::ToggleComments",
       "g r": "editor::Rename",
-      "g a": "editor::ToggleCodeActions"
+      "g a": "editor::ToggleCodeActions",
+
+      "space i a": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible " }
+      ],
+      "space r": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "Editor && mode == full && inline_completion",
+    "bindings": {
+      "tab": "editor::AcceptInlineCompletion",
+      "shift-tab": "editor::AcceptPartialInlineCompletion"
     }
   },
   {
@@ -191,7 +206,8 @@
     "bindings": {
       "escape": ["vim::SwitchMode", "Normal"],
       "j k": ["vim::SwitchMode", "Normal"],
-      "enter": "editor::Newline"
+      "enter": "editor::Newline",
+      "alt-f": "editor::ShowCompletions"
     }
   },
   {
