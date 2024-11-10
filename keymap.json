@@ -1,24 +1,31 @@
 [
   {
     "bindings": {
-      //Navigation
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-
-      //Menu
-      "alt-j": "menu::SelectNext",
-      "alt-k": "menu::SelectPrev",
-      "enter": "menu::Confirm",
-      "escape": "menu::Cancel",
 
       "ctrl-shift-h": "workspace::ToggleLeftDock",
       "ctrl-shift-j": "workspace::ToggleBottomDock",
       "ctrl-shift-l": "workspace::ToggleRightDock",
 
       "f11": "zed::ToggleFullScreen",
-      ":": "command_palette::Toggle"
+
+      ":": "command_palette::Toggle",
+
+      "alt-j": "menu::SelectNext",
+      "alt-k": "menu::SelectPrev",
+      "enter": "menu::Confirm",
+      "escape": "menu::Cancel"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-h": "pane::ActivatePrevItem",
+      "alt-l": "pane::ActivateNextItem",
+      "ctrl-w": "pane::CloseActiveItem"
     }
   },
   {
@@ -28,14 +35,6 @@
       "backspace": "editor::Backspace",
       "delete": "editor::Delete",
       "tab": "editor::Tab"
-    }
-  },
-  {
-    "context": "Pane",
-    "bindings": {
-      //Navigation
-      "alt-h": "pane::ActivatePrevItem",
-      "alt-l": "pane::ActivateNextItem"
     }
   },
   {
@@ -55,27 +54,11 @@
   {
     "context": "VimControl",
     "bindings": {
-      //Cursor keys
       "h": "vim::Left",
       "j": "vim::Down",
       "k": "vim::Up",
-      "l": "vim::Right"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      //Word motion
-      "w": "vim::NextWordStart",
-      "b": "vim::PreviousWordStart",
-      "e": "vim::NextWordEnd",
-      "shift-w": "vim::NextSubwordStart",
-      "shift-b": "vim::PreviousSubwordStart",
-      "shift-e": "vim::NextSubwordEnd",
-      //Search
-      "/": "vim::Search",
-      "?": "pane::DeploySearch",
-      //Numbers
+      "l": "vim::Right",
+
       "0": ["vim::Number", 0],
       "1": ["vim::Number", 1],
       "2": ["vim::Number", 2],
@@ -86,48 +69,55 @@
       "7": ["vim::Number", 7],
       "8": ["vim::Number", 8],
       "9": ["vim::Number", 9],
-      //Search
-      "alt-j": "vim::MoveToNextMatch",
-      "alt-k": "vim::MoveToPrevMatch",
-      //Tabs
-      // "alt-h": "pane::ActivatePrevItem",
-      // "alt-l": "pane::ActivateNextItem",
-      //Other
-      "ctrl-w": "pane::CloseActiveItem",
-      "space w": "workspace::Save",
-      "space q": "workspace::CloseWindow",
-      //G actions
+
+      "w": "vim::NextWordStart",
+      "b": "vim::PreviousWordStart",
+      "e": "vim::NextWordEnd",
+      "shift-w": "vim::NextSubwordStart",
+      "shift-b": "vim::PreviousSubwordStart",
+      "shift-e": "vim::NextSubwordEnd",
+
+      "/": "vim::Search",
+      "?": "pane::DeploySearch",
+
+      "g c": "vim::ToggleComments",
+      "g r": "editor::Rename",
+      "g a": "editor::ToggleCodeActions",
+      "g e": "vim::PreviousWordEnd",
+
+      "g d": "editor::GoToDefinition",
+      "g shift-d": "editor::GoToDeclaration",
+      "g y": "editor::GoToTypeDefinition",
+      "g shift-i": "editor::GoToImplementation",
+
       "g g": "vim::StartOfDocument",
       "shift-g": "vim::EndOfDocument",
+
+      "space w": "workspace::Save",
+      "space q": "workspace::CloseWindow",
+      "space h": "editor::Fold",
+      "space l": "editor::UnfoldLines",
+      "space o": "outline::Toggle",
+      "space g": "go_to_line::Toggle",
+      "space r": "projects::OpenRecent",
 
       "shift-j": ["workspace::SendKeystrokes", "1 0 j"],
       "shift-k": ["workspace::SendKeystrokes", "1 0 k"]
     }
   },
   {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      ":": null
-    }
-  },
-  {
     "context": "vim_mode == normal",
     "bindings": {
-      //Insert
       "i": "vim::InsertBefore",
       "shift-i": "vim::InsertFirstNonWhitespace",
       "a": "vim::InsertAfter",
       "shift-a": "vim::InsertEndOfLine",
-      //Visual
       "v": "vim::ToggleVisual",
       "shift-v": "vim::ToggleVisualLine",
-      //Undo Redo
       "u": "vim::Undo",
-      "ctrl-r": "vim::Redo",
-      //Yank
+      "r": "vim::Redo",
       "y": ["vim::PushOperator", "Yank"],
       "shift-y": "vim::YankLine",
-      //Paste
       "p": "vim::Paste",
       "shift-p": [
         "vim::Paste",
@@ -135,28 +125,31 @@
           "before": true
         }
       ],
-      //New line
       "o": "vim::InsertLineBelow",
       "shift-o": "vim::InsertLineAbove",
-      //Delete
       "d": ["vim::PushOperator", "Delete"],
       "shift-d": "vim::DeleteToEndOfLine",
-      //Other
-      // "space": "vim::PushOperator",
-      "space h": "editor::Fold",
-      "space l": "editor::UnfoldLines",
-      "space o": "outline::Toggle",
-      "space g": "go_to_line::Toggle",
-      //G actions
-      "g c": "vim::ToggleComments",
-      "g r": "editor::Rename",
-      "g a": "editor::ToggleCodeActions",
-
-      "space i a": [
-        "assistant::InlineAssist",
-        { "prompt": "Be as brief as possible " }
-      ],
-      "space r": "projects::OpenRecent"
+      "c": ["vim::PushOperator", "Change"]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "alt-j": "vim::MoveToNextMatch",
+      "alt-k": "vim::MoveToPrevMatch"
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      ":": null
+    }
+  },
+  {
+    "context": "vim_operator == y || vim_operator == i || vim_operator == cs",
+    "use_layout_keys": true,
+    "bindings": {
+      "w": "vim::Word"
     }
   },
   {
@@ -276,7 +269,8 @@
     "bindings": {
       "ctrl-enter": "assistant::Assist",
       "enter": "assistant::Assist",
-      "alt-;": "assistant::ToggleModelSelector"
+      "alt-;": "assistant::ToggleModelSelector",
+      "ctrl-t": "assistant::NewContext"
     }
   },
   {
@@ -318,11 +312,14 @@
     "context": "Terminal",
     "bindings": {
       "ctrl-t": "workspace::NewTerminal",
-      "ctrl-w": "pane::CloseActiveItem"
+      "alt-j": ["terminal::SendKeystroke", "down"],
+      "alt-k": ["terminal::SendKeystroke", "up"]
     }
   },
   {
-    "context": "EmptyPane || SharedScreen",
-    "bindings": {}
+    "context": "menu",
+    "bindings": {
+      "enter": "menu::Confirm"
+    }
   }
 ]

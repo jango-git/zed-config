@@ -16,8 +16,8 @@
     "version": "2",
     "default_open_ai_model": null,
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o-mini"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     }
   },
   "language_models": {
@@ -29,7 +29,6 @@
   "relative_line_numbers": true,
   "tab_size": 2,
   "vim_mode": true,
-  // "show_completions_on_input": false,
   "vim": {
     "use_smartcase_find": true,
     "use_system_clipboard": "always"
@@ -54,12 +53,6 @@
   "terminal": {
     "button": false
   },
-  // "notification_panel": {
-  //   "button": false
-  // },
-  // "chat_panel": {
-  //   "button": false
-  // },
   "project_panel": {
     "default_width": 300,
     "scrollbar": {
@@ -77,7 +70,7 @@
   "soft_wrap": "editor_width",
   "languages": {
     "JSON": {
-      "format_on_save": "off"
+      // "format_on_save": "off"
     }
   }
 }
