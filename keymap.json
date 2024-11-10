@@ -17,7 +17,8 @@
       "ctrl-shift-j": "workspace::ToggleBottomDock",
       "ctrl-shift-l": "workspace::ToggleRightDock",
 
-      "f11": "zed::ToggleFullScreen"
+      "f11": "zed::ToggleFullScreen",
+      ":": "command_palette::Toggle"
     }
   },
   {
@@ -35,6 +36,13 @@
       //Navigation
       "alt-h": "pane::ActivatePrevItem",
       "alt-l": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Editor && (mode == single_line || mode == auto_height)",
+    "bindings": {
+      "alt-h": "editor::MoveLeft",
+      "alt-l": "editor::MoveRight"
     }
   },
   {
@@ -85,7 +93,6 @@
       // "alt-h": "pane::ActivatePrevItem",
       // "alt-l": "pane::ActivateNextItem",
       //Other
-      ":": "command_palette::Toggle",
       "ctrl-w": "pane::CloseActiveItem",
       "space w": "workspace::Save",
       "space q": "workspace::CloseWindow",
@@ -95,6 +102,12 @@
 
       "shift-j": ["workspace::SendKeystrokes", "1 0 j"],
       "shift-k": ["workspace::SendKeystrokes", "1 0 k"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      ":": null
     }
   },
   {
@@ -164,8 +177,7 @@
       "d": "vim::VisualDelete",
       "shift-d": "vim::VisualDeleteLine",
       //Paste
-      "p": "vim::Paste",
-      "shift-p": [
+      "p": [
         "vim::Paste",
         {
           "preserveClipboard": true
@@ -194,11 +206,6 @@
         "assistant::InlineAssist",
         { "prompt": "Be as brief as possible Finish this code" }
       ]
-
-      // "space i a": [
-      //   "assistant::InlineAssist",
-      //   { "prompt": "Be as brief as possible " }
-      // ]
     }
   },
   {
@@ -216,14 +223,6 @@
       "enter": "assistant::Assist"
     }
   },
-  // {
-  //   "context": "Editor && vim_mode == insert",
-  //   "bindings": {
-  //     "escape": ["vim::SwitchMode", "Normal"],
-  //     "j k": ["vim::SwitchMode", "Normal"],
-  //     "enter": "editor::Newline"
-  //   }
-  // },
   {
     "context": "vim_mode == insert && !showing_completions",
     "bindings": {
@@ -260,27 +259,18 @@
     }
   },
   {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-c": "editor::Copy",
+      "ctrl-shift-v": "editor::Paste"
+    }
+  },
+  {
     "context": "Editor && renaming",
     "bindings": {
       "enter": "editor::ConfirmRename"
     }
   },
-  // {
-  //   "context": "inline_completion",
-  //   "bindings": {
-  //     "alt-h": "editor::MoveLeft",
-  //     "alt-j": "editor::MoveDown",
-  //     "alt-k": "editor::MoveUp",
-  //     "alt-l": "editor::MoveRight",
-  //     "enter": "editor::ConfirmCompletion"
-  //   }
-  // },
-  // {
-  //   "context": "ContextEditor > Editor",
-  //   "bindings": {
-  //     "enter": "assistant::Assist"
-  //   }
-  // },
   {
     "context": "AssistantPanel",
     "bindings": {
@@ -309,12 +299,6 @@
       "escape": "buffer_search::Dismiss"
     }
   },
-  // {
-  //   "context": "Editor && mode == full && vim_mode === insert",
-  //   "bindings": {
-  //     "enter": "editor::Newline"
-  //   }
-  // },
   {
     "context": "Editor && showing_completions",
     "bindings": {
