@@ -38,7 +38,7 @@
     }
   },
   {
-    "context": "Editor && (mode == single_line || mode == auto_height)",
+    "context": "Editor && jupyter && (mode == single_line || mode == auto_height)",
     "bindings": {
       "alt-h": "editor::MoveLeft",
       "alt-l": "editor::MoveRight"
@@ -115,7 +115,7 @@
       "v": "vim::ToggleVisual",
       "shift-v": "vim::ToggleVisualLine",
       "u": "vim::Undo",
-      "r": "vim::Redo",
+      "ctrl-r": "vim::Redo",
       "y": ["vim::PushOperator", "Yank"],
       "shift-y": "vim::YankLine",
       "p": "vim::Paste",
