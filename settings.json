@@ -11,7 +11,7 @@
     "inline_completion_provider": "supermaven"
   },
   "assistant": {
-    "button": false,
+    "button": true,
     "default_width": 640,
     "version": "2",
     "default_open_ai_model": null,
@@ -43,7 +43,7 @@
   },
   "theme": {
     "mode": "system",
-    "dark": "Ayu Mirage",
+    "dark": "One Dark",
     "light": "Gruvbox Light"
   },
   "autosave": "on_window_change",
@@ -51,6 +51,12 @@
     "show": "never"
   },
   "terminal": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "notification_panel": {
     "button": false
   },
   "project_panel": {
@@ -70,6 +76,9 @@
   "soft_wrap": "editor_width",
   "languages": {
     "JSON": {
+      "format_on_save": "off"
+    },
+    "JavaScript": {
       "format_on_save": "off"
     }
   }
