@@ -51,8 +51,10 @@
     "show": "never"
   },
   "terminal": {
-    "button": false
+    "button": false,
+    "font_family": "JetBrainsMono Nerd Font Mono"
   },
+  // "tabs": { "git_status": true },
   "chat_panel": {
     "button": false
   },
@@ -80,6 +82,15 @@
     },
     "JavaScript": {
       "format_on_save": "off"
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.organizeImports": true,
+        "source.removeUnusedImports": true
+      }
     }
   }
+  // "file_types": {
+  //   "JSONC": ["jsonc", "json"]
+  // }
 }
