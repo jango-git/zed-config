@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "inline_completion_provider": "supermaven"
+    "edit_prediction_provider": "zed"
   },
   "assistant": {
     "button": true,
@@ -17,7 +17,7 @@
     "default_open_ai_model": null,
     "default_model": {
       "provider": "openai",
-      "model": "gpt-4o"
+      "model": "gpt-4o-mini"
     }
   },
   "language_models": {
@@ -51,12 +51,14 @@
     "show": "never"
   },
   "terminal": {
-    "button": false,
-    "font_family": "JetBrainsMono Nerd Font Mono"
+    "button": false
   },
   // "tabs": { "git_status": true },
+  "git_panel": {
+    "default_width": 300
+  },
   "chat_panel": {
-    "button": false
+    "button": "never"
   },
   "notification_panel": {
     "button": false
@@ -77,20 +79,14 @@
   },
   "soft_wrap": "editor_width",
   "languages": {
-    "JSON": {
-      "format_on_save": "off"
-    },
-    "JavaScript": {
-      "format_on_save": "off"
-    },
     "TypeScript": {
       "code_actions_on_format": {
         "source.organizeImports": true,
         "source.removeUnusedImports": true
       }
     }
+  },
+  "file_types": {
+    "JSONC": ["jsonc", "json"]
   }
-  // "file_types": {
-  //   "JSONC": ["jsonc", "json"]
-  // }
 }

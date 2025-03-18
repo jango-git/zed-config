@@ -1,31 +1,22 @@
 [
   {
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
 
       "ctrl-shift-h": "workspace::ToggleLeftDock",
       "ctrl-shift-j": "workspace::ToggleBottomDock",
       "ctrl-shift-l": "workspace::ToggleRightDock",
 
-      "f11": "zed::ToggleFullScreen",
-
-      ":": "command_palette::Toggle",
-
-      "alt-j": "menu::SelectNext",
-      "alt-k": "menu::SelectPrev",
-      "enter": "menu::Confirm",
-      "escape": "menu::Cancel"
+      "f11": "zed::ToggleFullScreen"
     }
   },
   {
-    "context": "Pane",
+    "context": "Editor && VimControl",
     "bindings": {
-      "alt-h": "pane::ActivatePrevItem",
-      "alt-l": "pane::ActivateNextItem",
-      "ctrl-w": "pane::CloseActiveItem"
+      ":": "command_palette::Toggle"
     }
   },
   {
@@ -116,7 +107,7 @@
       "shift-v": "vim::ToggleVisualLine",
       "u": "vim::Undo",
       "ctrl-r": "vim::Redo",
-      "y": ["vim::PushOperator", "Yank"],
+      "y": "vim::PushYank",
       "shift-y": "vim::YankLine",
       "p": "vim::Paste",
       "shift-p": [
@@ -127,85 +118,56 @@
       ],
       "o": "vim::InsertLineBelow",
       "shift-o": "vim::InsertLineAbove",
-      "d": ["vim::PushOperator", "Delete"],
+      "d": "vim::PushDelete",
       "shift-d": "vim::DeleteToEndOfLine",
-      "c": ["vim::PushOperator", "Change"]
+      "c": "vim::PushChange"
     }
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
       "alt-j": "vim::MoveToNextMatch",
-      "alt-k": "vim::MoveToPrevMatch"
-    }
-  },
-  {
-    "context": "Terminal || vim_mode == insert",
-    "bindings": {
-      ":": null
+      "alt-k": "vim::MoveToPreviousMatch"
     }
   },
   {
     "context": "vim_operator == y || vim_operator == i || vim_operator == cs",
-    "use_layout_keys": true,
     "bindings": {
       "w": "vim::Word"
     }
   },
   {
-    "context": "Editor && mode == full && inline_completion",
-    "bindings": {
-      "tab": "editor::AcceptInlineCompletion",
-      "shift-tab": "editor::AcceptPartialInlineCompletion"
-    }
-  },
-  {
     "context": "vim_mode == visual",
     "bindings": {
-      "escape": ["vim::SwitchMode", "Normal"],
-      //Yank
+      "escape": "vim::SwitchToNormalMode",
+
       "y": "vim::VisualYank",
       "shift-y": "vim::VisualYank",
-      //Delete
+
       "d": "vim::VisualDelete",
       "shift-d": "vim::VisualDeleteLine",
-      //Paste
+
       "p": [
         "vim::Paste",
         {
-          "preserveClipboard": true
+          "preserve_clipboard": true
         }
       ],
-      //Change
+
       "c": "vim::Substitute",
       "shift-c": "vim::SubstituteLine",
-      //Indent outdent
+
       ">": "vim::Indent",
       "<": "vim::Outdent",
-      //G actions
-      "g c": "vim::ToggleComments",
 
-      "space i a": [
-        "assistant::InlineAssist",
-        { "prompt": "Be as brief as possible " }
-      ],
-
-      "space i s": [
-        "assistant::InlineAssist",
-        { "prompt": "Be as brief as possible Simplify this code" }
-      ],
-
-      "space i f": [
-        "assistant::InlineAssist",
-        { "prompt": "Be as brief as possible Finish this code" }
-      ]
+      "g c": "vim::ToggleComments"
     }
   },
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "escape": ["vim::SwitchMode", "Normal"],
-      "j k": ["vim::SwitchMode", "Normal"],
+      "escape": "vim::SwitchToNormalMode",
+      "j k": "vim::SwitchToNormalMode",
       "enter": "editor::Newline",
       "alt-f": "editor::ShowCompletions"
     }
@@ -252,13 +214,6 @@
     }
   },
   {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-shift-c": "editor::Copy",
-      "ctrl-shift-v": "editor::Paste"
-    }
-  },
-  {
     "context": "Editor && renaming",
     "bindings": {
       "enter": "editor::ConfirmRename"
@@ -267,10 +222,8 @@
   {
     "context": "AssistantPanel",
     "bindings": {
-      "ctrl-enter": "assistant::Assist",
-      "enter": "assistant::Assist",
-      "alt-;": "assistant::ToggleModelSelector",
-      "ctrl-t": "assistant::NewContext"
+      "ctrl-t": "assistant::NewChat",
+      "ctrl-enter": "assistant::Assist"
     }
   },
   {
@@ -278,12 +231,14 @@
     "bindings": {
       "h": "project_panel::CollapseSelectedEntry",
       "j": "menu::SelectNext",
-      "k": "menu::SelectPrev",
-      "d d": "project_panel::Delete",
+      "k": "menu::SelectPrevious",
+      "d": "project_panel::Delete",
       "l": "project_panel::OpenPermanent",
       "a f": "project_panel::NewFile",
       "a d": "project_panel::NewDirectory",
-      "r": "project_panel::Rename"
+      "r": "project_panel::Rename",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste"
     }
   },
   {
@@ -294,18 +249,28 @@
     }
   },
   {
-    "context": "Editor && showing_completions",
+    "context": "menu",
     "bindings": {
-      "tab": "editor::ConfirmCompletion",
-      "enter": "editor::ConfirmCompletion",
-      "escape": "editor::Cancel"
+      "enter": "menu::Confirm",
+      "alt-j": "menu::SelectNext",
+      "alt-k": "menu::SelectPrevious"
     }
   },
+  // {
+  //   "context": "Editor && showing_completions",
+  //   "bindings": {
+  //     "tab": "editor::ConfirmCompletion",
+  //     "enter": "editor::ConfirmCompletion",
+  //     "escape": "editor::Cancel"
+  //   }
+  // },
   {
-    "context": "Editor && (showing_code_actions || showing_completions)",
+    "context": "Editor && (edit_prediction_conflict || edit_prediction)",
     "bindings": {
-      "alt-j": "editor::ContextMenuNext",
-      "alt-k": "editor::ContextMenuPrev"
+      "alt-h": "editor::PreviousEditPrediction",
+      "alt-l": "editor::NextEditPrediction",
+      "tab": "editor::AcceptEditPrediction",
+      "shift-tab": "editor::AcceptPartialEditPrediction"
     }
   },
   {
@@ -313,13 +278,73 @@
     "bindings": {
       "ctrl-t": "workspace::NewTerminal",
       "alt-j": ["terminal::SendKeystroke", "down"],
-      "alt-k": ["terminal::SendKeystroke", "up"]
+      "alt-k": ["terminal::SendKeystroke", "up"],
+      "ctrl-shift-c": "terminal::Copy",
+      "ctrl-shift-v": "terminal::Paste"
     }
   },
   {
-    "context": "menu",
+    "context": "Editor && showing_completions",
     "bindings": {
-      "enter": "menu::Confirm"
+      "alt-j": "editor::ContextMenuNext",
+      "alt-k": "editor::ContextMenuPrevious",
+      "enter": "editor::ConfirmCompletion",
+      "escape": "editor::Cancel"
+    }
+  },
+  {
+    "context": "Editor && showing_code_actions",
+    "bindings": {
+      "alt-j": "editor::ContextMenuNext",
+      "alt-k": "editor::ContextMenuPrevious",
+      "enter": "editor::ConfirmCodeAction",
+      "escape": "editor::Cancel"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-w": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Picker",
+    "bindings": {
+      "alt-k": "menu::SelectPrevious",
+      "alt-j": "menu::SelectNext",
+      "enter": "menu::Confirm",
+      "escape": "menu::Cancel"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "space i a": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible. " }
+      ],
+
+      "space i s": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible. Simplify this code." }
+      ],
+
+      "space i f": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible. Fix this code." }
+      ],
+
+      "space i r": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible. Reefactor this code." }
+      ],
+
+      "space i c": [
+        "assistant::InlineAssist",
+        { "prompt": "Be as brief as possible. Add comments to this code." }
+      ]
     }
   }
 ]
