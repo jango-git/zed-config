@@ -28,13 +28,13 @@
       "tab": "editor::Tab"
     }
   },
-  {
-    "context": "Editor && jupyter && (mode == single_line || mode == auto_height)",
-    "bindings": {
-      "alt-h": "editor::MoveLeft",
-      "alt-l": "editor::MoveRight"
-    }
-  },
+  // {
+  //   "context": "Editor && jupyter && (mode == single_line || mode == auto_height)",
+  //   "bindings": {
+  //     "alt-h": "editor::MoveLeft",
+  //     "alt-l": "editor::MoveRight"
+  //   }
+  // },
   {
     "context": "Editor",
     "bindings": {
@@ -316,6 +316,14 @@
       "alt-j": "menu::SelectNext",
       "enter": "menu::Confirm",
       "escape": "menu::Cancel"
+    }
+  },
+  {
+    "context": "PromptEditor > Editor",
+    "bindings": {
+      "alt-h": "editor::MoveLeft",
+      "alt-l": "editor::MoveRight",
+      "enter": "menu::Confirm"
     }
   },
   {

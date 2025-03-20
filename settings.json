@@ -44,7 +44,7 @@
   "theme": {
     "mode": "system",
     "dark": "One Dark",
-    "light": "Gruvbox Light"
+    "light": "Ayu Light"
   },
   "autosave": "on_window_change",
   "scrollbar": {
